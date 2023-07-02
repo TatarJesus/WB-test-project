@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/activity.css" />
+    <link rel="stylesheet" href="../styles/map.css" />
+    <link rel="stylesheet" href="../styles/time.css" />
+    <title>Активность</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="name-pages">
+        <img src="../icons/Header/Back.svg" alt="" />
+        <span><b>User pages</b> - Profile</span>
+      </div>
+      <div class="navigation">
+        <div class="navigation-elem">
+          <img src="../icons/Header/Statistics.svg" alt="" />
+          <span>Statistics</span>
+        </div>
+        <div class="navigation-elem">
+          <img src="../icons/Header/Calculate.svg" alt="" />
+          <span>Invoices</span>
+        </div>
+        <div class="navigation-elem">
+          <img src="../icons/Header/Schedule.svg" alt="" />
+          <span>Schedule</span>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="map-block">
+        <div class="map-block-wrapper">
+          <div class="heading-block">
+            <span>Basic Map</span>
+            <div class="block-manag">
+              <img src="../icons/MapAndTime/ChevronDown.svg" alt="" />
+              <img src="../icons/MapAndTime/Update.svg" alt="" />
+              <img src="../icons/MapAndTime/Close.svg" alt="" />
+            </div>
+          </div>
+          <div id="map" class="map-g">
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?um=constructor%3A49af787b762c7ff7fd3a7df48b6f21df0a6a89c83f69e758e83b58c49fd9bed1&amp;source=constructor"
+              width="1280"
+              height="480"
+              frameborder="0"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-bar">
+      <div class="left-buts">
+        <a class="left-buts-elem activity link_internal" href="https://tatarjesus.github.io/WB-test-project/activity">
+          <img src="../icons/NavBar/Activity.svg" alt="" />
+          <span>Activity</span>
+        </a>
+        <a class="left-buts-elem map link_internal" href="https://tatarjesus.github.io/WB-test-project/map">
+          <img src="../icons/NavBar/Map.svg" alt="" />
+          <span>Map</span>
+        </a>
+        <a class="left-buts-elem time link_internal" href="https://tatarjesus.github.io/WB-test-project/time">
+          <img src="../icons/NavBar/Time.svg" alt="" />
+          <span>Time</span>
+        </a>
+      </div>
+      <div class="right-buts">
+        <div class="right-buts-elem notes">
+          <img src="../icons/NavBar/Notes.svg" alt="" />
+          <span>Notes</span>
+        </div>
+        <div class="right-buts-elem friends">
+          <img src="../icons/NavBar/Friends.svg" alt="" />
+          <span>Friends</span>
+        </div>
+        <div class="right-buts-elem photos">
+          <img src="../icons/NavBar/Photos.svg" alt="" />
+          <span>Photos</span>
+        </div>
+        <div class="right-buts-elem settings">
+          <img src="../icons/NavBar/Settings.svg" alt="" />
+          <img src="../icons/NavBar/SmallArrowDown.svg" alt="" />
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://tatarjesus.github.io/WB-test-project/scripts/route.js"></script>
+  <script src="https://tatarjesus.github.io/WB-test-project/scripts/stopwatch.js"></script>
+</html>
