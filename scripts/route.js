@@ -6,9 +6,9 @@ const routers = {
   "/activity": "/pages/Activity.html",
   "/map": "/pages/Map.html",
   "/time": "/pages/Time.html",
-  "/activity/": "/pages/Activity.html",
-  "/map/": "/pages/Map.html",
-  "/time/": "/pages/Time.html",
+  // "/activity/": "/pages/Activity.html",
+  // "/map/": "/pages/Map.html",
+  // "/time/": "/pages/Time.html",
 };
 
 const routers_full = {
@@ -38,7 +38,7 @@ const handleLocation = async () => {
   // const path = window.location.pathname;
   const path = current_href.slice(current_href.lastIndexOf('/'), current_href.length);
   console.log('path', path)
-  if (home_path + path !== "/WB-test-project/") {
+  if (routers_full.hasOwnProperty(path)) {
     console.log('routers_full[path]', routers_full[path])
     console.log('log', window.location.origin + home_path + routers_full[path]);
     document.innerHTML = await fetch(window.location.origin + home_path + routers_full[path]).then((data) =>
