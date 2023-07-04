@@ -38,10 +38,12 @@ const handleLocation = async () => {
   // const path = window.location.pathname;
   const path = current_href.slice(current_href.lastIndexOf('/'), current_href.length);
   if (home_path + path !== "/WB-test-project/") {
+    console.log('log', window.location.origin + home_path + routers_full[path]);
     document.innerHTML = await fetch(window.location.origin + home_path + routers_full[path]).then((data) =>
       data.text()
     );
   } else {
+    console.log('log', window.location.origin + home_path + routers[path]);
     document.innerHTML = await fetch(window.location.origin + home_path + routers["/"]).then((data) => data.text());
   }
   const html = await fetch(window.location.origin + home_path + routers[path]).then((data) => data.text());
