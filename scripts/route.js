@@ -37,7 +37,9 @@ const route = (e) => {
 const handleLocation = async () => {
   // const path = window.location.pathname;
   const path = current_href.slice(current_href.lastIndexOf('/'), current_href.length);
+  console.log('path', path)
   if (home_path + path !== "/WB-test-project/") {
+    console.log('routers_full[path]', routers_full[path])
     console.log('log', window.location.origin + home_path + routers_full[path]);
     document.innerHTML = await fetch(window.location.origin + home_path + routers_full[path]).then((data) =>
       data.text()
