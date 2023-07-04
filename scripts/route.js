@@ -27,7 +27,7 @@ document.addEventListener("click", (e) => {
 const route = (e) => {
   const href = e.target.href;
   current_href = window.location.origin + home_path + href.slice(href.lastIndexOf('/'), href.length);
-  console.log(pathE)
+  console.log(current_href)
   if (current_href !== window.location.href) {
     window.history.pushState({}, "", current_href);
     handleLocation();
