@@ -35,7 +35,7 @@ const route = (e) => {
 };
 
 const handleLocation = async () => {
-  // const path = window.location.pathname;
+  if (current_href === '') current_href = window.location.href;
   const path = current_href.slice(current_href.lastIndexOf('/'), current_href.length);
   console.log('path', path)
   let html = '';
