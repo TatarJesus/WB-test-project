@@ -25,10 +25,11 @@ const routers_full = {
 };
 
 document.addEventListener("click", (e) => {
+  console.log('e.target', e.target)
   if (e.target.tagName === "A") {
     route(e);
   }
-  // e.preventDefault();
+  e.preventDefault();
 });
 
 const route = (e) => {
