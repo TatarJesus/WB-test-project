@@ -13,7 +13,6 @@ const updateTime = () => {
     hours++;
     minutes = 0;
   }
-  console.log(window.location.pathname);
   if (window.location.pathname === "/WB-test-project/time" || window.location.pathname === "/WB-test-project/time/") {
     let timer = document.getElementById("timer");
     timer.textContent = `${hours.toString().padStart(2, "0")}:${minutes
