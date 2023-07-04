@@ -16,6 +16,8 @@ const routers_full = {
   "/time/": "../index.html",
 };
 
+const link_internal = document.querySelector('.link_internal');
+
 document.addEventListener("click", (e) => {
   console.log("e.target", e.target);
   if (e.target.classList.contains("link_internal")) {
