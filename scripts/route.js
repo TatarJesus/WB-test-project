@@ -28,35 +28,29 @@ document.addEventListener("click", (e) => {
   if (e.target.tagName === "A") {
     route(e);
   }
-  e.preventDefault();
+  // e.preventDefault();
 });
 
 const route = (e) => {
-  window.history.pushState({}, "", e.target.href);
-  handleLocation();
+  console.log('e.target.href', e.target.href);
+  if (e.target.href !== window.location.pathname){
+    window.history.pushState({}, "", e.target.href);
+    handleLocation();
+  }
 };
 
 const handleLocation = async () => {
   const path = "https://tatarjesus.github.io" + window.location.pathname;
-  console.log(path);
   if (path !== "https://tatarjesus.github.io/WB-test-project/") {
-    console.log("tut");
     document.innerHTML = await fetch(routers_full[path]).then((data) =>
       data.text()
     );
-    // switch (path) {
-    //   case "https://tatarjesus.github.io/WB-test-project/time":
-    // }
   } else {
     document.innerHTML = await fetch(
       routers["https://tatarjesus.github.io/WB-test-project/"]
     ).then((data) => data.text());
   }
-  // document.innerHTML = await fetch(
-  //   routers["https://tatarjesus.github.io/WB-test-project/"]
-  // ).then((data) => data.text());
   const html = await fetch(routers[path]).then((data) => data.text());
-  console.log(html);
   document.querySelector(".container").innerHTML = html;
 };
 
