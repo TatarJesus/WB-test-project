@@ -1,4 +1,5 @@
 const home_path = '/WB-test-project';
+let current_href = '';
 
 const routers = {
   "/": "../index.html",
@@ -17,8 +18,6 @@ const routers_full = {
 };
 
 document.addEventListener("click", (e) => {
-  console.log("e.target", e.target);
-  console.log("this", this);
   if (e.target.classList.contains("link_internal")) {
     route(e);
   }
@@ -26,12 +25,11 @@ document.addEventListener("click", (e) => {
 });
 
 const route = (e) => {
-  console.log("e.target.href", e.target.href);
   const href = e.target.href;
-  const pathE = window.location.origin + home_path + href.slice(href.lastIndexOf('/'), href.length);
+  current_href = window.location.origin + home_path + href.slice(href.lastIndexOf('/'), href.length);
   console.log(pathE)
-  if (pathE !== window.location.pathname) {
-    window.history.pushState({}, "", pathE);
+  if (current_href !== window.location.href) {
+    window.history.pushState({}, "", current_href);
     handleLocation();
   }
 };
@@ -39,13 +37,13 @@ const route = (e) => {
 const handleLocation = async () => {
   const path = window.location.pathname;
   if (home_path + path !== "/WB-test-project/") {
-    document.innerHTML = await fetch(window.location.origin + routers_full[path]).then((data) =>
+    document.innerHTML = await fetch(window.location.origin + home_path + routers_full[path]).then((data) =>
       data.text()
     );
   } else {
-    document.innerHTML = await fetch(routers["/"]).then((data) => data.text());
+    document.innerHTML = await fetch(window.location.origin + home_path + routers["/"]).then((data) => data.text());
   }
-  const html = await fetch(routers[path]).then((data) => data.text());
+  const html = await fetch(window.location.origin + home_path + routers[path]).then((data) => data.text());
   document.querySelector(".container").innerHTML = html;
 };
 
