@@ -37,8 +37,7 @@
 .content-one img {
   width: 1016px;
   height: 424px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url(abstract-purple-digital-art-retrowave-wallpaper.jpg);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
   flex: none;
   order: 0;
   flex-grow: 0;

@@ -12,9 +12,9 @@ const routers = {
 };
 
 const routers_full = {
-  "/activity/": "/activity/index.html",
-  "/map/": "/map/index.html",
-  "/time/": "/time/index.html",
+  "/activity/": "/index.html",
+  "/map/": "/index.html",
+  "/time/": "/index.html"
 };
 
 document.addEventListener("click", (e) => {
