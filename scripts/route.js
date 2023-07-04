@@ -38,17 +38,19 @@ const handleLocation = async () => {
   // const path = window.location.pathname;
   const path = current_href.slice(current_href.lastIndexOf('/'), current_href.length);
   console.log('path', path)
+  let html = '';
   if (routers_full.hasOwnProperty(path)) {
     console.log('routers_full[path]', routers_full[path])
     console.log('log', window.location.origin + home_path + routers_full[path]);
     document.innerHTML = await fetch(window.location.origin + home_path + routers_full[path]).then((data) =>
       data.text()
     );
+    html = await fetch(window.location.origin + home_path + routers[path.slice(0, path.length - 1)]).then((data) => data.text());
   } else {
     console.log('log', window.location.origin + home_path + routers[path]);
     document.innerHTML = await fetch(window.location.origin + home_path + routers["/"]).then((data) => data.text());
+    html = await fetch(window.location.origin + home_path + routers[path]).then((data) => data.text());
   }
-  const html = await fetch(window.location.origin + home_path + routers[path]).then((data) => data.text());
   document.querySelector(".container").innerHTML = html;
 };
 
