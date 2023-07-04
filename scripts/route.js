@@ -1,3 +1,5 @@
+const home_path = '/WB-test-project';
+
 const routers = {
   "/": "../index.html",
   "/activity": "../pages/Activity.html",
@@ -24,7 +26,7 @@ document.addEventListener("click", (e) => {
 
 const route = (e) => {
   console.log("e.target.href", e.target.href);
-  const pathE = "/WB-test-project" + e.target.href;
+  const pathE = home_path + e.target.href;
   if (pathE !== window.location.pathname) {
     window.history.pushState({}, "", pathE);
     handleLocation();
@@ -33,8 +35,8 @@ const route = (e) => {
 
 const handleLocation = async () => {
   const path = window.location.pathname;
-  if ("/WB-test-project" + path !== "/WB-test-project/") {
-    document.innerHTML = await fetch(routers_full[path]).then((data) =>
+  if (home_path + path !== "/WB-test-project/") {
+    document.innerHTML = await fetch(window.location.origin + routers_full[path]).then((data) =>
       data.text()
     );
   } else {
