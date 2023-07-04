@@ -2,19 +2,19 @@ const home_path = '/WB-test-project';
 let current_href = '';
 
 const routers = {
-  "/": "index.html",
-  "/activity": "pages/Activity.html",
-  "/map": "pages/Map.html",
-  "/time": "pages/Time.html",
-  "/activity/": "pages/Activity.html",
-  "/map/": "pages/Map.html",
-  "/time/": "pages/Time.html",
+  "/": "/index.html",
+  "/activity": "/pages/Activity.html",
+  "/map": "/pages/Map.html",
+  "/time": "/pages/Time.html",
+  "/activity/": "/pages/Activity.html",
+  "/map/": "/pages/Map.html",
+  "/time/": "/pages/Time.html",
 };
 
 const routers_full = {
-  "/activity/": "../../index.html",
-  "/map/": "../../index.html",
-  "/time/": "../../index.html",
+  "/activity/": "/activity/index.html",
+  "/map/": "/map/index.html",
+  "/time/": "/time/index.html",
 };
 
 document.addEventListener("click", (e) => {
