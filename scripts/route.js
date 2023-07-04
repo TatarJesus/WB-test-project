@@ -28,6 +28,7 @@ document.addEventListener("click", (e) => {
 const route = (e) => {
   console.log("e.target.href", e.target.href);
   const href = e.target.href;
+  console.log('slice', href.slice(href.lastIndexOf(), href.length - 1))
   const pathE = window.location.origin + home_path + href.slice(href.lastIndexOf(), href.length - 1);
   console.log(pathE)
   if (pathE !== window.location.pathname) {
