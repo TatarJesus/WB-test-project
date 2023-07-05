@@ -21,7 +21,7 @@ document.addEventListener("click", (e) => {
   e.preventDefault();
 });
 
-window.addEventListener("load", (event) => {
+const readyMap = () => {
   document.querySelector(".map-g").innerHTML = '';
   ymaps.ready(init);
   function init() {
@@ -30,7 +30,7 @@ window.addEventListener("load", (event) => {
       zoom: 7,
     });
   }
-});
+};
 
 const route = (e) => {
   const href = e.target.href;
@@ -55,6 +55,7 @@ const handleLocation = async () => {
     document.innerHTML = await fetch(
       window.location.origin + home_path + routers_full[path]
     ).then((data) => data.text());
+    if (path.includes('map')) readyMap();
   } else {
     document.innerHTML = await fetch(
       window.location.origin + home_path + routers["/"]
@@ -63,6 +64,7 @@ const handleLocation = async () => {
       (data) => data.text()
     );
     document.querySelector(".container").innerHTML = html;
+    if (path.includes('map')) readyMap();
   }
 };
 
