@@ -21,8 +21,6 @@ document.addEventListener("click", (e) => {
   e.preventDefault();
 });
 
-document.addEventListener("DOMContentLoaded", readyMap);
-
 window.addEventListener("load", (event) => {
   document.querySelector(".map-g").innerHTML = '';
   ymaps.ready(init);
@@ -33,8 +31,6 @@ window.addEventListener("load", (event) => {
     });
   }
 });
-
-const readyMap = () => {};
 
 const route = (e) => {
   const href = e.target.href;
