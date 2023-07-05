@@ -45,13 +45,13 @@ const handleLocation = async () => {
     document.innerHTML = await fetch(window.location.origin + home_path + routers_full[path]).then((data) =>
       data.text()
     );
-    html = await fetch(window.location.origin + home_path + routers[path.slice(0, path.length - 1)]).then((data) => data.text());
+    // html = await fetch(window.location.origin + home_path + routers[path.slice(0, path.length - 1)]).then((data) => data.text());
   } else {
     console.log('log', window.location.origin + home_path + routers[path]);
     document.innerHTML = await fetch(window.location.origin + home_path + routers["/"]).then((data) => data.text());
     html = await fetch(window.location.origin + home_path + routers[path]).then((data) => data.text());
+    document.querySelector(".container").innerHTML = html;
   }
-  document.querySelector(".container").innerHTML = html;
 };
 
 window.onpopstate = handleLocation;

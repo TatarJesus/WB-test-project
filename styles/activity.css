@@ -238,7 +238,6 @@
   order: 0;
   flex-grow: 0;
   border-radius: 50%;
-  background: url(../icons/eh8U7PHA4jU.jpg);
   background-size: cover;
 }
 
@@ -250,7 +249,6 @@
   bottom: -50.76%;
   max-width: 100%;
   max-height: 100%;
-  background: url(../icons/eh8U7PHA4jU.jpg);
 }
 
 .about-user {
