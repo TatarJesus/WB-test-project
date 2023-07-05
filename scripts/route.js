@@ -33,15 +33,17 @@ const readyMap = () => {
 };
 
 const add_active_ref = () => {
-  let path = current_href.replace(window.location.origin + home_path, "");
-  path = current_href.replace(window.location.origin, "");
+  let path = '';
+  if (current_href.includes(home_path)) path = current_href.replace(window.location.origin + home_path, "");
+  else path = current_href.replace(window.location.origin, "");
   const btn = document.querySelector('.' + path.replaceAll('/', ''));
   btn.classList.add('active');
 }
 
 const del_active_ref = () => {
-  let path = current_href.replace(window.location.origin + home_path, "");
-  path = current_href.replace(window.location.origin, "");
+  let path = '';
+  if (current_href.includes(home_path)) path = current_href.replace(window.location.origin + home_path, "");
+  else path = current_href.replace(window.location.origin, "");
   const btn = document.querySelector('.' + path.replaceAll('/', ''));
   btn.classList.del('active');
 }
