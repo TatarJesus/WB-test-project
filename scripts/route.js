@@ -5,10 +5,7 @@ const routers = {
   "/": "/index.html",
   "/activity": "/pages/Activity.html",
   "/map": "/pages/Map.html",
-  "/time": "/pages/Time.html",
-  // "/activity/": "/pages/Activity.html",
-  // "/map/": "/pages/Map.html",
-  // "/time/": "/pages/Time.html",
+  "/time": "/pages/Time.html"
 };
 
 const routers_full = {
@@ -28,7 +25,7 @@ const route = (e) => {
   const href = e.target.href;
   current_href = window.location.origin + home_path + href.slice(href.lastIndexOf('/'), href.length);
   console.log(current_href)
-  if (current_href !== window.location.href) {
+  if ((current_href !== window.location.href) && ((current_href + '/') !== window.location.href)) {
     window.history.pushState({}, "", current_href);
     handleLocation();
   }
