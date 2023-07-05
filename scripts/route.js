@@ -34,13 +34,13 @@ const readyMap = () => {
 
 const add_active_ref = () => {
   const path = current_href.replace(window.location.origin + home_path, "");
-  const btn = document.querySelector('.' + path.replace('/'));
+  const btn = document.querySelector('.' + path.replace('/', ''));
   btn.classList.add('active');
 }
 
 const del_active_ref = () => {
   const path = current_href.replace(window.location.origin + home_path, "");
-  const btn = document.querySelector('.' + path.replace('/'));
+  const btn = document.querySelector('.' + path.replace('/', ''));
   btn.classList.del('active');
 }
 
