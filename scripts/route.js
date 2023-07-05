@@ -32,13 +32,27 @@ const readyMap = () => {
   }
 };
 
+const add_active_ref = () => {
+  const path = current_href.replace(window.location.origin + home_path, "");
+  const btn = document.querySelector('.' + path.replace('/'));
+  btn.classList.add('active');
+}
+
+const del_active_ref = () => {
+  const path = current_href.replace(window.location.origin + home_path, "");
+  const btn = document.querySelector('.' + path.replace('/'));
+  btn.classList.del('active');
+}
+
 const route = (e) => {
   const href = e.target.href;
+  del_active_ref();
   current_href =
     window.location.origin +
     home_path +
     href.slice(href.lastIndexOf("/"), href.length);
-  if (
+  add_active_ref();
+    if (
     current_href !== window.location.href &&
     current_href + "/" !== window.location.href
   ) {
@@ -48,8 +62,11 @@ const route = (e) => {
 };
 
 const handleLocation = async () => {
-  if (current_href === "") current_href = window.location.href;
-  const path = current_href.replace(window.location.origin + home_path, "");
+  if (current_href === "") {
+    current_href = window.location.href;
+    add_active_ref();
+  }
+    const path = current_href.replace(window.location.origin + home_path, "");
   let html = "";
   if (routers_full.hasOwnProperty(path)) {
     document.innerHTML = await fetch(
