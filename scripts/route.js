@@ -16,7 +16,10 @@ const routers_full = {
 
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("link_internal")) {
-    route(e);
+    route(e.target.href);
+  }
+  else if (e.target.parentElement.classList.contains("left-buts-elem")){
+    route(e.target.parentElement.href);
   }
   e.preventDefault();
 });
@@ -48,8 +51,8 @@ const del_active_ref = () => {
   btn.classList.remove('active');
 }
 
-const route = (e) => {
-  const href = e.target.href;
+const route = (ref) => {
+  const href = ref;
   del_active_ref();
   current_href =
     window.location.origin +
