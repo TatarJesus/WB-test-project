@@ -36,7 +36,8 @@ const route = (e) => {
 
 const handleLocation = async () => {
   if (current_href === '') current_href = window.location.href;
-  const path = current_href.slice(current_href.lastIndexOf('/'), current_href.length);
+  // const path = current_href.slice(current_href.lastIndexOf('/'), current_href.length);
+  const path = current_href.replace(home_path, '');
   console.log('path', path)
   let html = '';
   if (routers_full.hasOwnProperty(path)) {
