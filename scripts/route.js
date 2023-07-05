@@ -45,7 +45,7 @@ const del_active_ref = () => {
   if (current_href.includes(home_path)) path = current_href.replace(window.location.origin + home_path, "");
   else path = current_href.replace(window.location.origin, "");
   const btn = document.querySelector('.' + path.replaceAll('/', ''));
-  btn.classList.del('active');
+  btn.classList.remove('active');
 }
 
 const route = (e) => {
