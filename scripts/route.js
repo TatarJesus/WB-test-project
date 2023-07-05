@@ -24,7 +24,6 @@ document.addEventListener("click", (e) => {
 const route = (e) => {
   const href = e.target.href;
   current_href = window.location.origin + home_path + href.slice(href.lastIndexOf('/'), href.length);
-  console.log(current_href)
   if ((current_href !== window.location.href) && ((current_href + '/') !== window.location.href)) {
     window.history.pushState({}, "", current_href);
     handleLocation();
@@ -33,19 +32,13 @@ const route = (e) => {
 
 const handleLocation = async () => {
   if (current_href === '') current_href = window.location.href;
-  // const path = current_href.slice(current_href.lastIndexOf('/'), current_href.length);
   const path = current_href.replace(window.location.origin + home_path, '');
-  console.log('path', path)
   let html = '';
   if (routers_full.hasOwnProperty(path)) {
-    console.log('routers_full[path]', routers_full[path])
-    console.log('true log', window.location.origin + home_path + routers_full[path]);
     document.innerHTML = await fetch(window.location.origin + home_path + routers_full[path]).then((data) =>
       data.text()
     );
-    // html = await fetch(window.location.origin + home_path + routers[path.slice(0, path.length - 1)]).then((data) => data.text());
   } else {
-    console.log('else log', window.location.origin + home_path + routers[path]);
     document.innerHTML = await fetch(window.location.origin + home_path + routers["/"]).then((data) => data.text());
     html = await fetch(window.location.origin + home_path + routers[path]).then((data) => data.text());
     document.querySelector(".container").innerHTML = html;
