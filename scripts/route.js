@@ -90,6 +90,7 @@ const handleLocation = async () => {
     document.querySelector(".container").innerHTML = html;
     if (path.includes('map')) readyMap();
   }
+  updateTime();
 };
 
 window.onpopstate = handleLocation;

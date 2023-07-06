@@ -14,6 +14,8 @@ const updateTime = () => {
 
 const updateUserTime = () => {
   time = new Date().getTime();
+  let timer = document.getElementById("timer");
+  timer.textContent = "00:00:00";
 };
 
 interval = setInterval(updateTime, 1000);
