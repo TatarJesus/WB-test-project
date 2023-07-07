@@ -7,8 +7,7 @@ const updateTime = () => {
     let now = new Date().getTime();
     let sec = Math.floor((now - time) / 1000);
     let hhmmss = new Date(sec * 1000).toISOString().substr(11, 8);
-    if (hhmmss.indexOf("00:") === 0) timer.textContent = hhmmss.substr(0);
-    else timer.textContent = hhmmss;
+    timer.textContent = hhmmss;
   }
 };
 
