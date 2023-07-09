@@ -52,12 +52,11 @@ const route = (href) => {
 };
 
 const handleLocation = async () => {
-  let path = current_href.replace(window.location.origin + "/" + home_path, "");
-  let html = "";
+  let path = pageName.replace(home_path, "");
   document.innerHTML = await fetch(
     window.location.origin + home_path + routers["/"]
   ).then((data) => data.text());
-  html = await fetch(window.location.origin + home_path + routers[path]).then(
+  const html = await fetch(window.location.origin + home_path + routers[path]).then(
     (data) => data.text()
   );
   document.querySelector(".container").innerHTML = html;
