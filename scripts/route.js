@@ -1,5 +1,6 @@
-const home_path = "/WB-test-project";
+const home_path = "WB-test-project";
 let current_href = "";
+const pageName = window.location.pathname.replaceAll("/", "");
 
 const routers = {
   "/": "/index.html",
@@ -17,15 +18,14 @@ const routers_full = {
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("link_internal")) {
     route(e.target.href);
-  }
-  else if (e.target.parentElement.classList.contains("left-buts-elem")){
+  } else if (e.target.parentElement.classList.contains("left-buts-elem")) {
     route(e.target.parentElement.href);
   }
   e.preventDefault();
 });
 
 const readyMap = () => {
-  document.querySelector(".map-g").innerHTML = '';
+  document.querySelector(".map-g").innerHTML = "";
   ymaps.ready(init);
   function init() {
     var myMap = new ymaps.Map("map", {
@@ -35,61 +35,33 @@ const readyMap = () => {
   }
 };
 
-const add_active_ref = () => {
-  let path = '';
-  if (current_href.includes(home_path)) path = current_href.replace(window.location.origin + home_path, "");
-  else path = current_href.replace(window.location.origin, "");
-  const btn = document.querySelector('.' + path.replaceAll('/', ''));
-  btn.classList.add('active');
-}
+const changeActiveLink = () => {
+  const prevActiveBtn = document.querySelector(".active");
+  if (!prevActiveBtn) prevActiveBtn.classList.remove("active");
+  const curActiveBtn = document.querySelector(pageName.replace(home_path, ""));
+  curActiveBtn.classList.add("active");
+};
 
-const del_active_ref = () => {
-  let path = '';
-  if (current_href.includes(home_path)) path = current_href.replace(window.location.origin + home_path, "");
-  else path = current_href.replace(window.location.origin, "");
-  const btn = document.querySelector('.' + path.replaceAll('/', ''));
-  btn.classList.remove('active');
-}
-
-const route = (ref) => {
-  const href = ref;
-  del_active_ref();
-  current_href =
-    window.location.origin +
-    home_path +
-    href.slice(href.lastIndexOf("/"), href.length);
-  add_active_ref();
-    if (
-    current_href !== window.location.href &&
-    current_href + "/" !== window.location.href
-  ) {
+const route = (href) => {
+  const path = href.replaceAll("/", "");
+  if (path !== pageName) {
     window.history.pushState({}, "", current_href);
     handleLocation();
+    changeActiveLink();
   }
 };
 
 const handleLocation = async () => {
-  if (current_href === "") {
-    current_href = window.location.href;
-    add_active_ref();
-  }
-    const path = current_href.replace(window.location.origin + home_path, "");
+  let path = current_href.replace(window.location.origin + "/" + home_path, "");
   let html = "";
-  if (routers_full.hasOwnProperty(path)) {
-    document.innerHTML = await fetch(
-      window.location.origin + home_path + routers_full[path]
-    ).then((data) => data.text());
-    if (path.includes('map')) readyMap();
-  } else {
-    document.innerHTML = await fetch(
-      window.location.origin + home_path + routers["/"]
-    ).then((data) => data.text());
-    html = await fetch(window.location.origin + home_path + routers[path]).then(
-      (data) => data.text()
-    );
-    document.querySelector(".container").innerHTML = html;
-    if (path.includes('map')) readyMap();
-  }
+  document.innerHTML = await fetch(
+    window.location.origin + home_path + routers["/"]
+  ).then((data) => data.text());
+  html = await fetch(window.location.origin + home_path + routers[path]).then(
+    (data) => data.text()
+  );
+  document.querySelector(".container").innerHTML = html;
+  if (path.includes("map")) readyMap();
   updateTime();
 };
 
