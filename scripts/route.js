@@ -8,11 +8,11 @@ const routers = {
 };
 
 
-btnPages.onclick = (e) => {
+btnPages.addEventListener('click', (e) => {
   console.log(this);
   route(e.target.href);
   e.preventDefault();
-};
+});
 
 // document.addEventListener("click", (e) => {
 //   if (e.target.classList.contains("link_internal")) {
@@ -37,6 +37,7 @@ const readyMap = () => {
 const changeActiveLink = () => {
   const prevActiveBtn = document.querySelector(".active");
   if (prevActiveBtn) prevActiveBtn.classList.remove("active");
+
   const curActiveBtn = document.querySelector('.' + pageName);
   curActiveBtn.classList.add("active");
 };
