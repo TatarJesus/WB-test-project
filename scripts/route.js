@@ -3,10 +3,9 @@ let current_href = "";
 const pageName = window.location.pathname.replaceAll("/", "");
 
 const routers = {
-  "/": "/index.html",
-  "/activity": "/pages/Activity.html",
-  "/map": "/pages/Map.html",
-  "/time": "/pages/Time.html",
+  "activity": "/pages/Activity.html",
+  "map": "/pages/Map.html",
+  "time": "/pages/Time.html",
 };
 
 const routers_full = {
@@ -37,7 +36,7 @@ const readyMap = () => {
 
 const changeActiveLink = () => {
   const prevActiveBtn = document.querySelector(".active");
-  if (!prevActiveBtn) prevActiveBtn.classList.remove("active");
+  if (prevActiveBtn) prevActiveBtn.classList.remove("active");
   const curActiveBtn = document.querySelector(pageName.replace(home_path, ""));
   curActiveBtn.classList.add("active");
 };
@@ -53,9 +52,6 @@ const route = (href) => {
 
 const handleLocation = async () => {
   let path = pageName.replace(home_path, "");
-  document.innerHTML = await fetch(
-    window.location.origin + home_path + routers["/"]
-  ).then((data) => data.text());
   const html = await fetch(window.location.origin + home_path + routers[path]).then(
     (data) => data.text()
   );
