@@ -36,7 +36,7 @@ const readyMap = () => {
 const changeActiveLink = () => {
   const prevActiveBtn = document.querySelector(".active");
   if (prevActiveBtn) prevActiveBtn.classList.remove("active");
-  const curActiveBtn = document.querySelector(pageName.replace(home_path, ""));
+  const curActiveBtn = document.querySelector('.' + pageName);
   curActiveBtn.classList.add("active");
 };
 
@@ -50,10 +50,7 @@ const route = (href) => {
 };
 
 const handleLocation = async () => {
-  let path = pageName.replace(home_path, "");
-  const html = await fetch(
-    window.location.origin + home_path + routers[path]
-  ).then((data) => data.text());
+  const html = await fetch(routers[pageName]).then((data) => data.text());
   document.querySelector(".container").innerHTML = html;
   if (path.includes("map")) readyMap();
   updateTime();
