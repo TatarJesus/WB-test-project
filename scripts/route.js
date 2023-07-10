@@ -1,21 +1,13 @@
-const home_path = "WB-test-project";
-let current_href = "";
-const pageName = window.location.pathname.replaceAll("/", "");
+const pageName = window.location.pathname.split('/')[2];
 
 const routers = {
-  activity: "/pages/Activity.html",
-  map: "/pages/Map.html",
-  time: "/pages/Time.html",
-};
-
-const routers_full = {
-  "/activity/": "/activity/index.html",
-  "/map/": "/map/index.html",
-  "/time/": "/time/index.html",
+  'activity': "/pages/Activity.html",
+  'map': "/pages/Map.html",
+  'time': "/pages/Time.html",
 };
 
 document.querySelector(".nav-bar a").addEventListener("click", (e) => {
-  console.log(e.target.href);
+  console.log(this);
   e.preventDefault();
 });
 
