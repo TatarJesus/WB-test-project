@@ -14,8 +14,9 @@ const routers_full = {
   "/time/": "/time/index.html",
 };
 
-document.querySelector(".nav-bar a").addEventListener("click", () => {
-  console.log("vau");
+document.querySelector(".nav-bar a").addEventListener("click", (e) => {
+  console.log(e.target.href);
+  e.preventDefault();
 });
 
 // document.addEventListener("click", (e) => {
