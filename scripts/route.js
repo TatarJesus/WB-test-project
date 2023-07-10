@@ -1,5 +1,5 @@
 const pageName = window.location.pathname.split('/')[2];
-const btnPages = document.querySelector('.nav-bar');
+const btnPages = document.querySelectorAll('.link_internal');
 
 const routers = {
   'activity': "/pages/Activity.html",
