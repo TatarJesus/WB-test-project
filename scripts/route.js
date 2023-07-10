@@ -3,9 +3,9 @@ let current_href = "";
 const pageName = window.location.pathname.replaceAll("/", "");
 
 const routers = {
-  "activity": "/pages/Activity.html",
-  "map": "/pages/Map.html",
-  "time": "/pages/Time.html",
+  activity: "/pages/Activity.html",
+  map: "/pages/Map.html",
+  time: "/pages/Time.html",
 };
 
 const routers_full = {
@@ -14,14 +14,18 @@ const routers_full = {
   "/time/": "/time/index.html",
 };
 
-document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("link_internal")) {
-    route(e.target.href);
-  } else if (e.target.parentElement.classList.contains("left-buts-elem")) {
-    route(e.target.parentElement.href);
-  }
-  e.preventDefault();
+document.querySelector(".nav-bar a").addEventListener("click", () => {
+  console.log("vau");
 });
+
+// document.addEventListener("click", (e) => {
+//   if (e.target.classList.contains("link_internal")) {
+//     route(e.target.href);
+//   } else if (e.target.parentElement.classList.contains("left-buts-elem")) {
+//     route(e.target.parentElement.href);
+//   }
+//   e.preventDefault();
+// });
 
 const readyMap = () => {
   document.querySelector(".map-g").innerHTML = "";
@@ -52,9 +56,9 @@ const route = (href) => {
 
 const handleLocation = async () => {
   let path = pageName.replace(home_path, "");
-  const html = await fetch(window.location.origin + home_path + routers[path]).then(
-    (data) => data.text()
-  );
+  const html = await fetch(
+    window.location.origin + home_path + routers[path]
+  ).then((data) => data.text());
   document.querySelector(".container").innerHTML = html;
   if (path.includes("map")) readyMap();
   updateTime();
