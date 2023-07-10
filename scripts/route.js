@@ -1,4 +1,5 @@
 const pageName = window.location.pathname.split('/')[2];
+const btnPages = document.querySelectorAll('.link_internal');
 
 const routers = {
   'activity': "/pages/Activity.html",
@@ -6,10 +7,11 @@ const routers = {
   'time': "/pages/Time.html",
 };
 
-document.querySelector(".nav-bar a").addEventListener("click", (e) => {
+
+btnPages.onclick = (e) => {
   console.log(this);
   e.preventDefault();
-});
+};
 
 // document.addEventListener("click", (e) => {
 //   if (e.target.classList.contains("link_internal")) {
