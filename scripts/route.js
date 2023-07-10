@@ -1,5 +1,5 @@
 const pageName = window.location.pathname.split('/')[2];
-const btnPages = document.querySelectorAll('.link_internal');
+const btns = document.querySelectorAll('.link_internal');
 
 const routers = {
   'activity': "/pages/Activity.html",
@@ -7,12 +7,13 @@ const routers = {
   'time': "/pages/Time.html",
 };
 
-
-btnPages.addEventListener('click', (e) => {
-  console.log(this);
-  route(e.target.href);
-  e.preventDefault();
-});
+for (const btn of btns) {
+  btn.addEventListener('click', (e) => {
+    console.log(this);
+    route(e.target.href);
+    e.preventDefault();
+  });
+}
 
 // document.addEventListener("click", (e) => {
 //   if (e.target.classList.contains("link_internal")) {
