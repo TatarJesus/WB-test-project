@@ -10,6 +10,7 @@ const routers = {
 
 btnPages.onclick = (e) => {
   console.log(this);
+  route(e.target.href);
   e.preventDefault();
 };
 
@@ -43,7 +44,7 @@ const changeActiveLink = () => {
 const route = (href) => {
   const path = href.replaceAll("/", "");
   if (path !== pageName) {
-    window.history.pushState({}, "", current_href);
+    window.history.pushState({}, "", pageName);
     handleLocation();
     changeActiveLink();
   }
