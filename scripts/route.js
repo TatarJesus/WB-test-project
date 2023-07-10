@@ -55,7 +55,7 @@ const route = (href) => {
 const handleLocation = async () => {
   const html = await fetch(routers[pageName]).then((data) => data.text());
   document.querySelector(".container").innerHTML = html;
-  if (path.includes("map")) readyMap();
+  if (pageName === "map") readyMap();
   updateTime();
 };
 
