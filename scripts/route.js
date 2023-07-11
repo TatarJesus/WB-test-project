@@ -57,5 +57,13 @@ const handleLocation = async (path) => {
   updateTime();
 };
 
-window.onpopstate = handleLocation(pageName);
+const handleLocationPopState = async (path) => {
+  const html = await fetch(routers[path.state]).then((data) => data.text());
+  document.querySelector(".container").innerHTML = html;
+  if (path.state === "map") readyMap();
+  updateTime();
+};
+
+
+window.onpopstate = handleLocationPopState;
 window.route = route;
