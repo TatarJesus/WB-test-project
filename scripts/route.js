@@ -1,17 +1,24 @@
-const pageName = window.location.pathname.split('/')[2];
-const btns = document.querySelectorAll('.link_internal');
+const pageName = window.location.pathname.split("/")[2];
+const btns = document.querySelectorAll(".link_internal");
 
 const routers = {
-  'activity': "./pages/Activity.html",
-  'map': "./pages/Map.html",
-  'time': "./pages/Time.html",
+  activity: "./pages/Activity.html",
+  map: "./pages/Map.html",
+  time: "./pages/Time.html",
 };
 
 for (const btn of btns) {
-  btn.addEventListener('click', (e) => {
+  btn.addEventListener("click", (e) => {
     route(this.document.activeElement.pathname);
     e.preventDefault();
   });
+}
+
+document.addEventListener("DOMContentLoaded", ready);
+
+const ready = () => {
+  if (pageName === "" && window.history.length === 0) pageName = "activity";
+  else pageName = document.cookie.match(/pageName=(.+?)(;|$)/)[1];
 }
 
 const readyMap = () => {
@@ -28,12 +35,12 @@ const readyMap = () => {
 const changeActiveLink = (path) => {
   const prevActiveBtn = document.querySelector(".active");
   if (prevActiveBtn) prevActiveBtn.classList.remove("active");
-  const curActiveBtn = document.querySelector('.' + path);
+  const curActiveBtn = document.querySelector("." + path);
   curActiveBtn.classList.add("active");
 };
 
 const route = (href) => {
-  const path = href.split('/')[2];
+  const path = href.split("/")[2];
   if (path !== pageName) {
     window.history.pushState(path, "", path);
     handleLocation(path);
@@ -42,8 +49,6 @@ const route = (href) => {
 };
 
 const handleLocation = async (path) => {
-  if (path === '' && window.history.length === 0) path = 'activity';
-  else path = document.cookie.match(/pageName=(.+?)(;|$)/)[1];
   const html = await fetch(routers[path]).then((data) => data.text());
   document.querySelector(".container").innerHTML = html;
   if (path === "map") readyMap();
@@ -52,4 +57,4 @@ const handleLocation = async (path) => {
 
 window.onpopstate = handleLocation;
 window.route = route;
-handleLocation();
+handleLocation(pageName);
