@@ -9,7 +9,7 @@ const routers = {
 
 for (const btn of btns) {
   btn.addEventListener("click", (e) => {
-    route(this.document.activeElement.pathname);
+    route(btn.href);
     e.preventDefault();
   });
 }
