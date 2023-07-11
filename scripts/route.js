@@ -18,6 +18,7 @@ const ready = () => {
   if (pageName === "" && window.history.length === 0) pageName = "activity";
   else pageName = document.cookie.match(/pageName=(.+?)(;|$)/)[1];
   window.history.replaceState(pageName, "", pageName);
+  handleLocation(pageName);
 };
 
 document.addEventListener("DOMContentLoaded", ready);
@@ -58,4 +59,3 @@ const handleLocation = async (path) => {
 
 window.onpopstate = handleLocation;
 window.route = route;
-handleLocation(pageName);
