@@ -57,5 +57,5 @@ const handleLocation = async (path) => {
   updateTime();
 };
 
-window.onpopstate = handleLocation;
+window.onpopstate = handleLocation(pageName);
 window.route = route;
