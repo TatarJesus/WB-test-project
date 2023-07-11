@@ -2,9 +2,9 @@ const pageName = window.location.pathname.split('/')[2];
 const btns = document.querySelectorAll('.link_internal');
 
 const routers = {
-  'activity': "/pages/Activity.html",
-  'map': "/pages/Map.html",
-  'time': "/pages/Time.html",
+  'activity': "./pages/Activity.html",
+  'map': "./pages/Map.html",
+  'time': "./pages/Time.html",
 };
 
 for (const btn of btns) {
