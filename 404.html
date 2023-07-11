@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script type="text/javascript">
-      window.history.replaceState(
-        window.history.state,
-        "",
-        window.history.state
-      );
-      console.log(window.history.state);
+      document.cookie = `pageName=${window.location.pathname.split("/")[2]}`;
       window.location.pathname = "/" + window.location.pathname.split("/")[1];
     </script>
   </head>
