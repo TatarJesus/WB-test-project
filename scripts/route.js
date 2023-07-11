@@ -14,15 +14,6 @@ for (const btn of btns) {
   });
 }
 
-// document.addEventListener("click", (e) => {
-//   if (e.target.classList.contains("link_internal")) {
-//     route(e.target.href);
-//   } else if (e.target.parentElement.classList.contains("left-buts-elem")) {
-//     route(e.target.parentElement.href);
-//   }
-//   e.preventDefault();
-// });
-
 const readyMap = () => {
   document.querySelector(".map-g").innerHTML = "";
   ymaps.ready(init);
@@ -44,13 +35,14 @@ const changeActiveLink = (path) => {
 const route = (href) => {
   const path = href.split('/')[2];
   if (path !== pageName) {
-    window.history.pushState({}, "", path);
+    window.history.pushState(path, "", path);
     handleLocation(path);
     changeActiveLink(path);
   }
 };
 
 const handleLocation = async (path) => {
+  // if (path === '') path = window.l
   const html = await fetch(routers[path]).then((data) => data.text());
   document.querySelector(".container").innerHTML = html;
   if (path === "map") readyMap();
