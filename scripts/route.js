@@ -1,4 +1,4 @@
-let pageName = window.location.pathname.split("/")[2];
+const pageName = window.location.pathname.split("/")[2];
 const btns = document.querySelectorAll(".link_internal");
 
 const routers = {
@@ -15,10 +15,11 @@ for (const btn of btns) {
 }
 
 const ready = () => {
-  if (pageName === "" && window.history.length === 0) pageName = "activity";
-  else pageName = document.cookie.match(/pageName=(.+?)(;|$)/)[1];
-  window.history.replaceState(pageName, "", pageName);
-  handleLocation(pageName);
+  let curPage = '';
+  (pageName === "" && window.history.length === 0) ? curPage = "activity" : curPage = document.cookie.match(/pageName=(.+?)(;|$)/)[1];
+  window.history.replaceState(curPage, "", curPage);
+  handleLocation(curPage);
+  changeActiveLink(curPage);
 };
 
 document.addEventListener("DOMContentLoaded", ready);
