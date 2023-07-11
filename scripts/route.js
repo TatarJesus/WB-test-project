@@ -1,4 +1,3 @@
-const pageName = window.location.pathname.split("/")[2];
 const btns = document.querySelectorAll(".link_internal");
 
 const routers = {
@@ -15,7 +14,7 @@ for (const btn of btns) {
 }
 
 const ready = () => {
-  const curPage = (pageName === "" && window.history.length === 0) ? "activity" : document.cookie.match(/pageName=(.+?)(;|$)/)[1];
+  const curPage = (window.location.pathname.split("/")[2] === "" && window.history.length === 0) ? "activity" : document.cookie.match(/pageName=(.+?)(;|$)/)[1];
   window.history.replaceState(curPage, "", curPage);
   handleLocation(curPage);
   changeActiveLink(curPage);
@@ -45,7 +44,7 @@ const changeActiveLink = (path) => {
 
 const route = (href) => {
   const path = href.split("/")[4];
-  if (path !== pageName) {
+  if (path !== window.location.pathname.split("/")[2]) {
     window.history.pushState(path, "", path);
     handleLocation(path);
     changeActiveLink(path);
