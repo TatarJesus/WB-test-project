@@ -14,13 +14,13 @@ for (const btn of btns) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", ready);
-
 const ready = () => {
   if (pageName === "" && window.history.length === 0) pageName = "activity";
   else pageName = document.cookie.match(/pageName=(.+?)(;|$)/)[1];
   window.history.replaceState(pageName, "", pageName);
 };
+
+document.addEventListener("DOMContentLoaded", ready);
 
 const readyMap = () => {
   document.querySelector(".map-g").innerHTML = "";
