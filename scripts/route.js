@@ -34,11 +34,10 @@ const readyMap = () => {
   }
 };
 
-const changeActiveLink = () => {
+const changeActiveLink = (path) => {
   const prevActiveBtn = document.querySelector(".active");
   if (prevActiveBtn) prevActiveBtn.classList.remove("active");
-
-  const curActiveBtn = document.querySelector('.' + pageName);
+  const curActiveBtn = document.querySelector('.' + path);
   curActiveBtn.classList.add("active");
 };
 
@@ -46,15 +45,15 @@ const route = (href) => {
   const path = href.split('/')[2];
   if (path !== pageName) {
     window.history.pushState({}, "", path);
-    handleLocation();
-    changeActiveLink();
+    handleLocation(path);
+    changeActiveLink(path);
   }
 };
 
-const handleLocation = async () => {
-  const html = await fetch(routers[pageName]).then((data) => data.text());
+const handleLocation = async (path) => {
+  const html = await fetch(routers[path]).then((data) => data.text());
   document.querySelector(".container").innerHTML = html;
-  if (pageName === "map") readyMap();
+  if (path === "map") readyMap();
   updateTime();
 };
 
