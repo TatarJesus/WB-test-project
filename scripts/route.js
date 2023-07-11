@@ -1,4 +1,4 @@
-const pageName = window.location.pathname.split("/")[2];
+let pageName = window.location.pathname.split("/")[2];
 const btns = document.querySelectorAll(".link_internal");
 
 const routers = {
