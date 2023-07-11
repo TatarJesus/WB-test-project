@@ -43,7 +43,7 @@ const route = (href) => {
 
 const handleLocation = async (path) => {
   if (path === '' && window.history.length === 0) path = 'activity';
-  else path = document.cookie.match(/pageName=(.+?)(;|$)/);
+  else path = document.cookie.match(/pageName=(.+?)(;|$)/)[1];
   const html = await fetch(routers[path]).then((data) => data.text());
   document.querySelector(".container").innerHTML = html;
   if (path === "map") readyMap();
