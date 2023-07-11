@@ -43,6 +43,7 @@ const route = (href) => {
 
 const handleLocation = async (path) => {
   // if (path === '') path = window.l
+  window.history.replaceState(window.history.state, '', window.history.state);
   const html = await fetch(routers[path]).then((data) => data.text());
   document.querySelector(".container").innerHTML = html;
   if (path === "map") readyMap();
