@@ -15,12 +15,13 @@ for (const btn of btns) {
 }
 
 const ready = () => {
-  let curPage = '';
-  (pageName === "" && window.history.length === 0) ? curPage = "activity" : curPage = document.cookie.match(/pageName=(.+?)(;|$)/)[1];
+  const curPage = (pageName === "" && window.history.length === 0) ? "activity" : document.cookie.match(/pageName=(.+?)(;|$)/)[1];
   window.history.replaceState(curPage, "", curPage);
   handleLocation(curPage);
   changeActiveLink(curPage);
 };
+
+window.addEventListener('popstate', (e) => handleLocation(e.state)) 
 
 document.addEventListener("DOMContentLoaded", ready);
 
@@ -43,7 +44,7 @@ const changeActiveLink = (path) => {
 };
 
 const route = (href) => {
-  const path = href.split("/")[2];
+  const path = href.split("/")[4];
   if (path !== pageName) {
     window.history.pushState(path, "", path);
     handleLocation(path);
@@ -58,13 +59,4 @@ const handleLocation = async (path) => {
   updateTime();
 };
 
-const handleLocationPopState = async (path) => {
-  const html = await fetch(routers[path.state]).then((data) => data.text());
-  document.querySelector(".container").innerHTML = html;
-  if (path.state === "map") readyMap();
-  updateTime();
-};
-
-
-window.onpopstate = handleLocationPopState;
 window.route = route;
