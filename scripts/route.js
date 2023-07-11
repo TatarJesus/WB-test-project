@@ -9,8 +9,7 @@ const routers = {
 
 for (const btn of btns) {
   btn.addEventListener('click', (e) => {
-    console.log(this);
-    route(e.target.href);
+    route(this.document.activeElement.pathname);
     e.preventDefault();
   });
 }
@@ -44,9 +43,9 @@ const changeActiveLink = () => {
 };
 
 const route = (href) => {
-  const path = href.replaceAll("/", "");
+  const path = href.split('/')[2];
   if (path !== pageName) {
-    window.history.pushState({}, "", pageName);
+    window.history.pushState({}, "", path);
     handleLocation();
     changeActiveLink();
   }
